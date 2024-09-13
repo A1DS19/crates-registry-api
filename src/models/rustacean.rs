@@ -3,8 +3,8 @@ use diesel::prelude::Queryable;
 
 #[derive(Debug, Queryable)]
 pub struct Rustacean {
-    id: i32,
-    name: String,
-    email: String,
-    created_at: NaiveDateTime,
+    pub id: i32,
+    pub name: String,
+    pub email: String,
+    pub created_at: NaiveDateTime,
 }

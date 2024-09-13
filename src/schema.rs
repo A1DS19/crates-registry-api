@@ -27,7 +27,4 @@ diesel::table! {
 
 diesel::joinable!(crate_ -> rustacean (rustacean_id));
 
-diesel::allow_tables_to_appear_in_same_query!(
-    crate_,
-    rustacean,
-);
+diesel::allow_tables_to_appear_in_same_query!(crate_, rustacean,);
