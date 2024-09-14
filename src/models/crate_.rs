@@ -1,7 +1,7 @@
 use chrono::NaiveDateTime;
 use diesel::prelude::Queryable;
 
-#[derive(Debug, Queryable)]
+#[derive(Queryable)]
 pub struct Crate {
     pub id: i32,
     pub rustacean_id: i32,

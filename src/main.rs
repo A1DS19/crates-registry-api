@@ -1,5 +1,6 @@
-mod dto;
+mod dtos;
 mod models;
+mod repositories;
 mod schema;
 
 fn main() {

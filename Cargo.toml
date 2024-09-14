@@ -13,4 +13,5 @@ incremental = false      # Disable incremental compilation
 
 [dependencies]
 chrono = "0.4.38"
-diesel = { version = "2.2.0", features = ["postgres"] }
+diesel = { version = "2.2.0", features = ["postgres", "chrono"] }
+diesel-async = {version = "0.5.0", features = ["postgres"]}
