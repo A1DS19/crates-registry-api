@@ -15,7 +15,10 @@ use rocket_db_pools::Connection;
 #[get("/")]
 pub async fn index(mut db: Connection<DbConn>) -> Result<Value, Custom<Value>> {
     match RustaceanRepository::get_all(&mut db).await {
-        Ok(rustaceans) => Ok(json!(rustaceans)),
+        Ok(rustaceans) => {
+            rocket::info!("Logging rustaceans");
+            Ok(json!(rustaceans))
+        }
 
         Err(e) => {
             rocket::error!("An error occurred: {:?}", e);
