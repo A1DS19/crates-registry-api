@@ -14,7 +14,20 @@ impl GenericRepository<Rustacean> for RustaceanRepository {
     }
 
     async fn get_by_id(id: i32, connection: &mut AsyncPgConnection) -> QueryResult<Rustacean> {
-        rustacean::table.find(id).get_result(connection).await
+        let result = rustacean::table
+            .find(id)
+            .get_result::<Rustacean>(connection)
+            .await;
+
+        if let Ok(rustacean) = &result {
+            if rustacean.id == id {
+                result
+            } else {
+                Err(diesel::result::Error::NotFound)
+            }
+        } else {
+            result
+        }
     }
 
     async fn add(
@@ -31,13 +44,23 @@ impl GenericRepository<Rustacean> for RustaceanRepository {
         entity: &Rustacean,
         connection: &mut AsyncPgConnection,
     ) -> QueryResult<Rustacean> {
-        diesel::update(rustacean::table.find(entity.id))
+        let result = diesel::update(rustacean::table.find(entity.id))
             .set((
                 rustacean::name.eq(&entity.name),
                 rustacean::email.eq(&entity.email),
             ))
-            .get_result(connection)
-            .await
+            .get_result::<Rustacean>(connection)
+            .await;
+
+        if let Ok(rustacean) = &result {
+            if rustacean.id == entity.id {
+                result
+            } else {
+                Err(diesel::result::Error::NotFound)
+            }
+        } else {
+            result
+        }
     }
 
     async fn delete(id: i32, connection: &mut AsyncPgConnection) -> QueryResult<usize> {

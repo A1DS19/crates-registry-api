@@ -12,4 +12,4 @@ RUN cargo install diesel_cli --no-default-features --features postgres
 RUN cargo install cargo-watch
 
 # Set up cargo watch to rebuild in release mode when changes occur
-CMD ["cargo", "watch", "-w", "/app", "-x", "run"]
+CMD ["cargo", "watch", "-w", "/app", "-x", "run --release"]

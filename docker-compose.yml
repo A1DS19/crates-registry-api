@@ -12,6 +12,9 @@ services:
       DATABASE_URL: postgres://postgres:postgres@postgres/crates
       REDIS_URL: redis://redis:6379
       ROCKET_ADDRESS: "0.0.0.0"
+      ROCKET_LOG_LEVEL: "debug"
+      ROCKET_DATABASES: '{postgres={url="postgres://postgres:postgres@postgres/crates"}}'
+
   
   postgres:
     image: postgres:16.4
