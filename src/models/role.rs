@@ -4,8 +4,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Queryable, Serialize, Deserialize)]
 pub struct Role {
-    id: i32,
-    code: String,
-    name: String,
-    created_at: NaiveDateTime,
+    pub id: i32,
+    pub code: String,
+    pub name: String,
+    pub created_at: NaiveDateTime,
 }
