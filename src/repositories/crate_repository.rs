@@ -29,13 +29,7 @@ impl GenericRepository<Crate> for CrateRepository {
 
     async fn update(entity: &Crate, connection: &mut AsyncPgConnection) -> QueryResult<Crate> {
         diesel::update(crate_::table.find(entity.id))
-            .set((
-                crate_::name.eq(&entity.name),
-                crate_::code.eq(&entity.code),
-                crate_::description.eq(&entity.description),
-                crate_::rustacean_id.eq(&entity.rustacean_id),
-                crate_::version.eq(&entity.version),
-            ))
+            .set((crate_::id.eq(&entity.id),))
             .get_result(connection)
             .await
     }
