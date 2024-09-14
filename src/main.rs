@@ -3,6 +3,15 @@ mod models;
 mod repositories;
 mod schema;
 
-fn main() {
-    println!("Hello, world!");
+#[macro_use]
+extern crate rocket;
+
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/api", routes![index])
 }
