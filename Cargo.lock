@@ -278,6 +278,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8318a53db07bb3f8dca91a600466bdb3f2eaadeedfdbcf02e1accbad9271ba50"
 
 [[package]]
+name = "c8s"
+version = "0.1.0"
+dependencies = [
+ "argon2",
+ "chrono",
+ "clap",
+ "diesel",
+ "diesel-async",
+ "lettre",
+ "rand",
+ "reqwest",
+ "rocket",
+ "rocket_db_pools",
+ "serde",
+ "serde_json",
+ "tera",
+ "tokio",
+]
+
+[[package]]
 name = "cc"
 version = "1.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -420,26 +440,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "608697df725056feaccfa42cffdaeeec3fccc4ffc38358ecd19b243e716a78e0"
 dependencies = [
  "libc",
-]
-
-[[package]]
-name = "crates-registry-api"
-version = "0.1.0"
-dependencies = [
- "argon2",
- "chrono",
- "clap",
- "diesel",
- "diesel-async",
- "lettre",
- "rand",
- "reqwest",
- "rocket",
- "rocket_db_pools",
- "serde",
- "serde_json",
- "tera",
- "tokio",
 ]
 
 [[package]]

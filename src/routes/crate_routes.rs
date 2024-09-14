@@ -1,8 +1,9 @@
 use crate::models::crate_::Crate;
 use crate::repositories::crate_repository::CrateRepository;
-use crate::DbConn;
+use crate::routes::DbConn;
 use crate::{dtos::new_crate::NewCrate, repositories::generic_repository::GenericRepository};
 use rocket::serde::json::Json;
+use rocket::{delete, get, post, put};
 use rocket::{
     http::Status,
     response::status::Custom,

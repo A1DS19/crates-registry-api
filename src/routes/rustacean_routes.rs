@@ -1,10 +1,11 @@
 use crate::models::rustacean::Rustacean;
 use crate::repositories::rustacean_repository::RustaceanRepository;
-use crate::DbConn;
+use crate::routes::DbConn;
 use crate::{
     dtos::new_rustacean::NewRustacean, repositories::generic_repository::GenericRepository,
 };
 use rocket::serde::json::Json;
+use rocket::{delete, get, post, put};
 use rocket::{
     http::Status,
     response::status::Custom,

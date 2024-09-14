@@ -1,19 +1,9 @@
-mod dtos;
-mod models;
-mod repositories;
-mod routes;
-mod schema;
-
+use c8s::routes::crate_routes;
+use c8s::routes::rustacean_routes;
+use c8s::routes::DbConn;
+use rocket::launch;
+use rocket::routes;
 use rocket_db_pools::Database;
-use routes::crate_routes;
-use routes::rustacean_routes;
-
-#[derive(Database)]
-#[database("postgres")]
-pub struct DbConn(rocket_db_pools::diesel::PgPool);
-
-#[macro_use]
-extern crate rocket;
 
 #[launch]
 fn rocket() -> _ {
