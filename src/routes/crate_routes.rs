@@ -16,7 +16,7 @@ pub async fn index(mut db: Connection<DbConn>) -> Result<Value, Custom<Value>> {
         Ok(rustaceans) => Ok(json!(rustaceans)),
 
         Err(e) => {
-            println!("An error occurred: {:?}", e);
+            rocket::error!("An error occurred: {:?}", e);
             Err(Custom(
                 Status::InternalServerError,
                 json!("An error occurred"),
@@ -35,7 +35,7 @@ pub async fn get_by_id(mut db: Connection<DbConn>, id: i32) -> Result<Value, Cus
                 return Err(Custom(Status::NotFound, json!("Crate not found")));
             }
 
-            println!("An error occurred: {:?}", e);
+            rocket::error!("An error occurred: {:?}", e);
             Err(Custom(
                 Status::InternalServerError,
                 json!("An error occurred"),
@@ -53,7 +53,7 @@ pub async fn add(
         Ok(_) => Ok(Custom(Status::Created, json!("Crate added"))),
 
         Err(e) => {
-            println!("An error occurred: {:?}", e);
+            rocket::error!("An error occurred: {:?}", e);
             Err(Custom(
                 Status::InternalServerError,
                 json!("An error occurred"),
@@ -75,7 +75,7 @@ pub async fn update(
                 return Err(Custom(Status::NotFound, json!("Rustacean not found")));
             }
 
-            println!("An error occurred: {:?}", e);
+            rocket::error!("An error occurred: {:?}", e);
             Err(Custom(
                 Status::InternalServerError,
                 json!("An error occurred"),
@@ -94,7 +94,7 @@ pub async fn delete(mut db: Connection<DbConn>, id: i32) -> Result<Custom<Value>
                 return Err(Custom(Status::NotFound, json!("Rustacean not found")));
             }
 
-            println!("An error occurred: {:?}", e);
+            rocket::error!("An error occurred: {:?}", e);
             Err(Custom(
                 Status::InternalServerError,
                 json!("An error occurred"),
